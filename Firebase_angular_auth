@@ -1,0 +1,29 @@
+npm install firebase @angular/fire --save
+
+src/app/app.module.ts
+//Importing environment
+import { environment } from '../environments/environment';
+import {AngularFireModule} from "@angular/fire";
+import { AngularFireAuthModule} from "@angular/fire/auth";
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
+
+@NgModule({
+  imports: [
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+  ]
+})
+
+Generate required components for Angular Firebase Authentication System App
+ng g c components/dashboard
+ng g c components/login
+ng g c components/signup
+ng g c components/forgot-password
+ng g c components/verify-email
+
+
+Setup Router Service for Navigating between Components
+Go to src/shared/routing/app-routing.module.ts
+

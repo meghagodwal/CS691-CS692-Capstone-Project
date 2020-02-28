@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: { // KEY name is firebase
+    apiKey: 'AIzaSyDqIpTQPeQUnY416aWEUVXKknDvoefQg-s',
+    authDomain: 'marketplace-badaa.firebaseapp.com',
+    databaseURL: 'https://marketplace-badaa.firebaseio.com',
+    projectId: 'marketplace-badaa',
+    storageBucket: 'marketplace-badaa.appspot.com',
+    messagingSenderId: '812744707468',
+    appId: '1:812744707468:web:ac3f3c6870fba33f7f1aa9'
+  }
 };
 
 /*
