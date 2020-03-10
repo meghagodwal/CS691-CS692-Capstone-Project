@@ -1,0 +1,31 @@
+<div class="container">
+  <p class="fnt-size">New User?</p>
+  <div class="form-container col-10">
+    <!--<div class="authBlock">-->
+    <h4>Sign Up</h4>
+    <form [formGroup]="myForm">
+      <div class="form-group ">
+        <input type="email" class="form-control" placeholder="Email Address" #userEmail required>
+      </div>
+
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="Password" #userPwd required>
+        <!--<div *ngIf="myForm.hasError('required', 'password')">
+          Please enter your newpassword
+        </div>-->
+      </div>
+
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="Confirm Password" #confirmUserPwd required >
+        <!--<div *ngIf="myForm.hasError('notSame')">
+          Passwords do not match
+        </div>-->
+      </div>
+      <br>
+      <!-- Calling SignUp Api from AuthService -->
+      <div class="form-group">
+        <input type="button" class="btn badge-info" value="Sign Up" (click)="authService.SignUp(userEmail.value, userPwd.value)">
+      </div>
+    </form>
+  </div>
+</div>

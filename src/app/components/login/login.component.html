@@ -1,0 +1,26 @@
+<div class="container">
+  <p class="fnt-size">Already have an account?</p>
+  <div class="form-container col-10">
+      <h4>Sign In</h4>
+      <div class="form-group ">
+        <input type="text" class="form-control" placeholder="Email" #userName required>
+      </div>
+
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="Password" #userPassword required>
+      </div>
+      <!-- Calling SignIn Api from AuthService -->
+      <div class="form-group">
+        <input type="button" class="btn btn-success" value="Log in" (click)="authService.SignIn(userName.value, userPassword.value)">
+      </div>
+
+      <div class="forgotPassword">
+        <b>Forgot Password? &nbsp;</b><a routerLink="/forgot-password">Click here</a>
+      </div>
+
+   <!-- <div class="redirectToLogin">
+      <span>Don't have an account?&nbsp;<button class="redirect btn badge-info" routerLink="/register"> Sign Up</button></span>
+    </div>-->
+
+  </div>
+</div>
