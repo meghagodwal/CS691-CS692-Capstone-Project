@@ -4,6 +4,16 @@
     <!--<div class="authBlock">-->
     <h4>Sign Up</h4>
     <form [formGroup]="myForm">
+
+      <div class="row">
+        <div class="col-sm-6 form-group">
+            <input type="text" name="firstname" id="first_name" class="form-control" placeholder="First Name">
+        </div>
+        <div class="col-sm-6 form-group">
+            <input type="text" name="lastname" id="last_name" class="form-control" placeholder="Last Name">
+        </div>
+      </div>
+
       <div class="form-group ">
         <input type="email" class="form-control" placeholder="Email Address" #userEmail required>
       </div>

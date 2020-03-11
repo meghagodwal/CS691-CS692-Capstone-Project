@@ -9,14 +9,16 @@
   margin-top: 20px;
   margin-left: 80px;
 }
-.item4 {
+
+.footer {
   grid-area: footer;
   font-family: "Calibri", sans-serif;
-  font-size: 10px;
+  font-size: 20px;
   background: rgba(0, 0, 0, 0.7);
   color: white;
   margin: 0;
-  padding: 0;
+  padding-top: 5px;
+  text-align: center;
 }
 
 .vertical{
