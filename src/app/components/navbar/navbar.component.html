@@ -1,12 +1,12 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-md navbar-dark bg fixed-top">
   <a class="navbar-brand" href="#">Pace Marketplace</a>
   <button class="navbar-toggler hidden-sm-up" type="button" (click)="isCollapsed = !isCollapsed" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div [ngbCollapse]="isCollapsed" class="collapse navbar-collapse" id="navbarsDefault">
     <ul class="navbar-nav ml-auto" routerLinkActive="active">
-        <li class="nav-item"><a class="nav-link" routerLink="home">Home</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="about">About</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/about">About</a></li>
         <li class="nav-item"><a class="nav-link" routerLink=""></a></li>
       </ul>
   </div>

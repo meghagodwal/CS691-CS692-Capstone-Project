@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from '../../services/auth.service';
+import {AuthService} from '../../services/auth/auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -9,23 +10,87 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  myForm: FormGroup;
+  registerForm: FormGroup;
+  submitted = false;
+  loading = false;
+  successMessage: string;
+  errorMessage: string;
 
-  constructor(public authService: AuthService, private formBuilder: FormBuilder) {
-    this.myForm = this.formBuilder.group({
-      password: ['', [Validators.required]],
-      confirmPassword: ['']
-    }, { validator: this.checkPasswords });
+  // convenience getter for easy access to form fields
+  get formVal() { return this.registerForm.controls; }
+
+  constructor(private formBuilder: FormBuilder,
+              private router: Router,
+              private registerService: AuthService) { }
+
+  ngOnInit() {
+    this.registerForm = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required,
+                      // Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
+                      Validators.minLength(6),
+                      // Validators.maxLength(25)
+        ]],
+      confirmPassword: ['', Validators.required]
+    }, {validators: this.checkPasswordMatch('password', 'confirmPassword')});
+
+    // console.log(this.registerForm.controls.confirmPassword);
   }
 
-  checkPasswords(group: FormGroup) { // here we have the 'passwords' group
-    const pass = group.controls.password.value;
-    const confirmPass = group.controls.confirmPassword.value;
+  private checkPasswordMatch(passwordKey: string, passwordConfirmationKey: string) {
+    return (group: FormGroup) => {
+      const passwordInput = group.controls[passwordKey];
+      const passwordConfirmationInput = group.controls[passwordConfirmationKey];
 
-    return pass === confirmPass ? null : { notSame: true };
+      if (passwordConfirmationInput.errors && !passwordConfirmationInput.errors.notSame) {
+        return;
+      }
+
+      if (passwordInput.value !== passwordConfirmationInput.value) {
+        return passwordConfirmationInput.setErrors({notSame: true});
+      } else {
+        return passwordConfirmationInput.setErrors(null);
+      }
+    };
   }
 
-  ngOnInit(): void {
+  /*onSubmitRegister() {
+    console.log(this.registerForm.controls.password);
+    console.log(this.registerForm.controls.confirmPassword);
+    console.log(this.registerForm.value);
+    console.log(this.registerForm.errors);
+
+    this.submitted = true;
+// return for here if form is invalid
+    /!*if (this.registerForm.invalid) {
+      console.log('Invalid: ', this.registerForm.invalid, " ", this.registerForm.errors);
+      return;
+    }*!/
+    this.loading = true;
+    this.registerService.SignUp(this.registerForm.value.email, this.registerForm.value.password)
+      .then(data => {console.log('Registration successful'); },
+        error => {this.loading = false; });
+  }*/
+
+  onSubmitRegister() {
+    this.submitted = true;
+    if (this.registerForm.invalid) {
+      console.log('Invalid: ', this.registerForm.invalid, ' ', this.registerForm.errors);
+      return;
+    }
+
+    this.registerService.SignUp(this.registerForm.value.email, this.registerForm.value.password)
+      .then(res => {
+        console.log(res);
+        this.errorMessage = '';
+        this.successMessage = 'Your account has been created';
+      }, err => {
+        console.log(err);
+        this.errorMessage = err.message;
+        this.successMessage = '';
+      });
   }
 
 }
