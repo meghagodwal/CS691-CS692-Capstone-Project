@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from '../../services/auth/auth.service';
 import {User} from '../../models/user';
+import {AuthService} from '../../services/auth/auth.service';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-myaccount',
+  templateUrl: './my-account.component.html',
+  styleUrls: ['./my-account.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class MyAccountComponent implements OnInit {
+
   userData: User;
   constructor(public authService: AuthService) {
     authService.userData.subscribe((res) => {

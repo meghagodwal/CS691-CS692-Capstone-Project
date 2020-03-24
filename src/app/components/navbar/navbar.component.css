@@ -2,6 +2,18 @@
   background-color: #041e42;
 }
 
-.font-link{
-  color: white;
+.nav-link{
+  color: #ffffff;
+}
+
+.btn-radius{
+  border-radius: 40px;
+}
+
+.btn-color{
+  background-color: #fc6c85;
+}
+
+.btn{
+  width: 100%;
 }

@@ -5,45 +5,34 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
-import {throwError} from 'rxjs';
+import {BehaviorSubject, Observable, throwError} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
-  userData: firebase.User; // Save logged in user data
+  userData: Observable<User>; // Save logged in user data
+
+  private loggedIn = new BehaviorSubject<boolean>(false);
+
+  get isLoggedIn() {
+    return this.loggedIn.asObservable();
+  }
 
   constructor(
     public afs: AngularFirestore,   // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
-    public router: Router,
-    // public ngZone: NgZone // NgZone service to remove outside scope warning
-  ) {
+    public router: Router  ) {
     /* Saving user data in localstorage when
     logged in and setting up null when logged out */
-    this.afAuth.authState.subscribe(user => {
-      if (user) {
-        this.userData = user;
-        localStorage.setItem('user', JSON.stringify(this.userData));
-        JSON.parse(localStorage.getItem('user'));
-      } else {
-        localStorage.setItem('user', null);
-        JSON.parse(localStorage.getItem('user'));
-      }
-    });
+    this.userData = afAuth.authState;
   }
 
-  // Sign in with email/password
-  /*SignIn(email, password) {
-    return this.afAuth.auth.signInWithEmailAndPassword(email, password)
-      .then((result) => {
-        this.router.navigate(['dashboard']);
-        this.SetUserData(result.user);
-      }).catch((error) => {
-        window.alert(error.message);
-      });
-  }*/
+  isSetUserSession(): boolean {
+    return !!localStorage.getItem('user');
+  }
+
   SignIn(email, password) {
     return new Promise<any>((resolve, reject) => {
       this.afAuth.auth.signInWithEmailAndPassword(email, password)
@@ -51,6 +40,8 @@ export class AuthService {
           if (res.user.emailVerified) {
             this.router.navigate(['dashboard']);
             this.SetUserData(res.user);
+            localStorage.setItem('user', JSON.stringify(res.user));
+            this.loggedIn.next(this.isSetUserSession());
             resolve(res);
           } else {
             throw new Error('Email not verified');
@@ -71,21 +62,6 @@ export class AuthService {
         }, err => reject(err));
     });
   }
-  /*// Sign up with email/password
-  doRegister(email, password) {
-    console.log('Signup register service');
-    return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-      .then((result) => {
-        /!* Call the SendVerificaitonMail() function when new user sign
-        up and returns promise *!/
-        this.SendVerificationMail();
-        this.SetUserData(result.user);
-      }).catch((error) => {
-        console.log(error.message);
-        throw error;
-      });
-  }*/
-
   // Send email verfificaiton when new user sign up
   SendVerificationMail() {
     return this.afAuth.auth.currentUser.sendEmailVerification()
@@ -104,11 +80,11 @@ export class AuthService {
       });
   }
 
-  // Returns true when user is looged in and email is verified
+  /*// Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
     return (user !== null && user.emailVerified !== false) ? true : false;
-  }
+  }*/
 
   /* Setting up user data when sign in with username/password,
   sign up with username/password and sign in with social auth
@@ -129,9 +105,18 @@ export class AuthService {
 
   // Sign out
   SignOut() {
-    return this.afAuth.auth.signOut().then(() => {
+      return new Promise<any>((resolve, reject) => {
+        this.afAuth.auth.signOut().then((res) => {
+          localStorage.removeItem('user');
+          this.loggedIn.next(this.isSetUserSession());
+          this.router.navigate(['home']);
+          resolve(res);
+        }, err => reject(err));
+      });
+
+    /*return this.afAuth.auth.signOut().then(() => {
       localStorage.removeItem('user');
       this.router.navigate(['home']);
-    });
+    });*/
   }
 }

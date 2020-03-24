@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from '../../services/auth/auth.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   isCollapsed = true;
-  constructor() { }
+  isLoggedIn: boolean;
+  constructor(public authService: AuthService) {}
 
   ngOnInit(): void {
+    this.authService.isLoggedIn.subscribe((res) => {
+      console.log(res);
+      this.isLoggedIn = res;
+    });
+    console.log(this.isLoggedIn);
   }
 
 }

@@ -5,6 +5,9 @@ import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {LoginComponent} from './components/login/login.component';
 import {SignupComponent} from './components/signup/signup.component';
 import {HomeComponent} from './components/home/home.component';
+import {AboutComponent} from './components/about/about.component';
+import {MyAccountComponent} from './components/myaccount/my-account.component';
+import {SellProductComponent} from './components/sell-product/sell-product.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -12,7 +15,10 @@ const routes: Routes = [
   {path: 'register', component: SignupComponent},
   {path: 'login', component: LoginComponent},
   {path: 'dashboard', component: DashboardComponent},
-  {path: 'verify-email-address', component: VerifyEmailComponent}];
+  {path: 'verify-email-address', component: VerifyEmailComponent},
+  {path: 'about', component: AboutComponent},
+  {path: 'myaccount', component: MyAccountComponent},
+  {path: 'sell-product', component: SellProductComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

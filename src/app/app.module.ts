@@ -18,6 +18,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './components/home/home.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { AboutComponent } from './components/about/about.component';
+import { MyAccountComponent } from './components/myaccount/my-account.component';
+import { SellProductComponent } from './components/sell-product/sell-product.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import {ReactiveFormsModule} from '@angular/forms';
     ForgotPasswordComponent,
     VerifyEmailComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    AboutComponent,
+    MyAccountComponent,
+    SellProductComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
