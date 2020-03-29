@@ -1,49 +1,49 @@
 <app-navbar></app-navbar>
-
-<div class="container-fluid" style="margin-top: 60px">
-  <div class="row">
-    <!-- Sidebar navigation -->
-    <nav class="col-md-2 d-md-block bg-light sidebar">
-      <div class="sidebar-sticky">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active">
-              User Profile
-            </a>
-          </li>
-          <!-- Calling SignOut() Api from AuthService -->
-          <li class="nav-item">
-            <a class="nav-link" (click)="authService.SignOut()">
-              Log out
-            </a>
-          </li>
-        </ul>
+  <div class="wrapper">
+    <div class="grid-row" style="margin: 30px; background-color: #ffffff">
+      <div class="row1 text-md-left" style="padding: 20px 10px 10px 30px;">
+        <h5>Recently Viewed</h5>
       </div>
-    </nav>
-
-    <!-- Main content -->
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-      <div class="inner-adjust">
-
-        <div class="pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">User Profile</h1>
-        </div>
-        <!-- Show user data when logged in -->
-        <div class="row" *ngIf="userData as user">
-          <div class="col-md-12">
-            <div class="media">
-              <div class="media-body">
-                <h1>Hello: <strong>{{(user.email) ? ((user.email).substring(0,(user.email).indexOf('@'))).charAt(0).toUpperCase()+
-                    ((user.email).substring(0,(user.email).indexOf('@'))).slice(1): 'User'}}</strong></h1>
-                <p>Email: <strong>{{user.email}}</strong></p>
-              </div>
-            </div>
+      <div class="row2">
+        <div class="card" style="width: 16rem;" *ngFor="let r of recent">
+          <div class="card-body">
+            <h5 class="card-title">{{r.title}}</h5>
+            <p class="card-text">{{r.description}}</p>
+            <button routerLink="/dashboard" class="btn btn-danger">Go somewhere</button>
           </div>
         </div>
-
       </div>
-    </main>
+    </div>
 
+    <div class="grid-row" style="margin: 30px; background-color: #ffffff">
+      <div class="row1 text-md-left" style="padding: 20px 10px 10px 30px;">
+        <h5>Most Viewed</h5>
+      </div>
+      <div class="row2">
+        <div class="card" style="width: 16rem;" *ngFor="let r of recent">
+          <div class="card-body">
+            <h5 class="card-title">{{r.title}}</h5>
+            <p class="card-text">{{r.description}}</p>
+            <a href="#" class="btn btn-danger">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-row2">
+      <div class="row1 text-md-center" style="padding: 20px 10px 10px 30px;">
+        <h5>Shop By Category</h5>
+      </div>
+      <div class="row-cat">
+        <div class="card" style="width: 18rem;" *ngFor="let cat of categories">
+          <div class="card-body">
+            <h5 class="card-title">{{cat.category}}</h5>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
-</div>
+
+
 <footer class="foot">&copy; JAMMR 2020</footer>

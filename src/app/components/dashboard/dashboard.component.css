@@ -1,5 +1,5 @@
-.container-fluid{
-  height: 84vh;
+.container{
+  height: 92vh;
 }
 
 .foot {
@@ -10,4 +10,51 @@
   margin: 0;
   padding: 12px 0px;
   text-align: center;
+}
+
+.wrapper{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 2fr;
+  margin-top: 50px;
+  background-color: #f7f7f9;
+}
+
+.grid-row{
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.15fr 1fr;
+  /*border-style: solid;*/
+  /*border-color: #041e42;*/
+  box-shadow: 10px 10px 5px 0px #f7f7f9;
+
+}
+
+.grid-row2{
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.15fr 1fr;
+  margin: 30px;
+  background-color: #ffffff
+}
+
+.row2{
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 20px;
+}
+
+.row-cat{
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2,1fr);
+  grid-gap: 20px;
 }

@@ -21,6 +21,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { AboutComponent } from './components/about/about.component';
 import { MyAccountComponent } from './components/myaccount/my-account.component';
 import { SellProductComponent } from './components/sell-product/sell-product.component';
+import {DashboardService} from './services/dashboard/dashboard.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -43,9 +45,10 @@ import { SellProductComponent } from './components/sell-product/sell-product.com
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, DashboardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
