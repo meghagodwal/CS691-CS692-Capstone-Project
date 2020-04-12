@@ -1,26 +1,34 @@
 [
-  {"img": "",
+  { "id": 1,
+    "img": "",
     "category": "Category 1"
   },
-  {"img": "",
+  { "id": 2,
+    "img": "",
     "category": "Category 2"
   },
-  {"img": "",
+  { "id": 3,
+    "img": "",
     "category": "Category 3"
   },
-  {"img": "",
+  { "id": 4,
+    "img": "",
     "category": "Category 4"
   },
-  {"img": "",
+  { "id": 5,
+    "img": "",
     "category": "Category 5"
   },
-  {"img": "",
+  { "id": 6,
+    "img": "",
     "category": "Category 6"
   },
-  {"img": "",
+  { "id": 7,
+    "img": "",
     "category": "Category 7"
   },
-  {"img": "",
+  { "id": 8,
+    "img": "",
     "category": "Category 8"
   }
 ]

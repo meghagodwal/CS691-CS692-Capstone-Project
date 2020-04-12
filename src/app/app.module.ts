@@ -15,7 +15,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import {AuthService} from './services/auth/auth.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModalModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './components/home/home.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { AboutComponent } from './components/about/about.component';
@@ -46,7 +46,8 @@ import {HttpClientModule} from '@angular/common/http';
     AppRoutingModule,
     NgbModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModalModule
   ],
   providers: [AuthService, DashboardService],
   bootstrap: [AppComponent]
