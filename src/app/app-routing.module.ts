@@ -17,8 +17,7 @@ const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent},
   {path: 'verify-email-address', component: VerifyEmailComponent},
   {path: 'about', component: AboutComponent},
-  {path: 'myaccount', component: MyAccountComponent},
-  {path: 'sell-product', component: SellProductComponent}];
+  {path: 'myaccount', component: MyAccountComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

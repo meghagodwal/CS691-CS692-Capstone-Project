@@ -28,8 +28,6 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
-
-    console.log(this.loginForm.controls);
   }
 
   onSubmitLogin() {
@@ -40,7 +38,6 @@ export class LoginComponent implements OnInit {
     }
     return this.authService.SignIn(this.loginForm.value.email, this.loginForm.value.password)
       .then(res => {
-        console.log(res);
         this.errorMessage = '';
       }, err => {
         console.log(err.message);

@@ -1,12 +1,21 @@
 .item1 { grid-area: header; }
+
 .item2 {
   grid-area: left;
-  margin-top: 20px;
-   margin-left: 80px;
+  padding-top: 20px;
+  margin-top: 0;
+  margin-left: 80px;
 }
+
+.vertical{
+  border-left: 1px solid black;
+  margin-top: 0;
+}
+
 .item3 {
   grid-area: right;
-  margin-top: 20px;
+  padding-top: 20px;
+  margin-top: 0;
   margin-left: 80px;
 }
 
@@ -19,11 +28,6 @@
   margin: 0;
   padding-top: 5px;
   text-align: center;
-}
-
-.vertical{
-  border-left: 1px solid black;
-  /*border-left-style: dashed;*/
 }
 
 .grid-container {

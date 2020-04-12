@@ -1,8 +1,3 @@
-body{
-  margin: 0;
-  font-family: BogleWeb, "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
 .form-container{
   border: 1px solid white;
   padding: 30px 40px;
@@ -29,7 +24,7 @@ body{
   }
   .fnt-size{
     font-size: 22px;
-    margin-top: 0px;
+    margin-top: 0;
     margin-bottom: 20px;
     font-weight: bolder;
   }
