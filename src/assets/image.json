@@ -1,0 +1,24 @@
+{
+  "team": [
+    {
+      "name": "Attinder Pal Singh",
+      "image": "assets/team/AP.jpg"
+    },
+    {
+      "name": "Jalpa Ashara",
+      "image": "assets/team/JP.jpg"
+    },
+    {
+      "name": "Megha Godwal",
+      "image": "assets/team/Megha.jpg"
+    },
+    {
+      "name": "Mizanur Rahman Murad",
+      "image": "assets/team/muraad.png"
+    },
+    {
+      "name": "Ravi Teja Gajarla",
+      "image": "assets/team/Ravi.jpg"
+    }
+  ]
+}
