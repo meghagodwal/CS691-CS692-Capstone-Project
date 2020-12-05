@@ -32,8 +32,11 @@ import { DragNDropDirective } from './components/sell-product/drag-ndrop.directi
 import { BrowseComponent } from './components/browse/browse.component';
 import { CatnavComponent } from './components/catnav/catnav.component';
 import { SearchComponent } from './components/search/search.component';
-import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SearchProductsComponent } from './components/search-products/search-products.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { MylistingsComponent } from './components/mylistings/mylistings.component';
+import { MyfavoritesComponent } from './components/myfavorites/myfavorites.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +57,10 @@ import { SearchProductsComponent } from './components/search-products/search-pro
     BrowseComponent,
     CatnavComponent,
     SearchComponent,
-    SearchProductsComponent
+    SearchProductsComponent,
+    UserProfileComponent,
+    MylistingsComponent,
+    MyfavoritesComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
